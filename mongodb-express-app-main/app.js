@@ -26,6 +26,11 @@ await client
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Health check / root endpoint
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "OK", message: "Library Books API is running" });
+});
+
 //CRUD API endpoints
 // Create a new book - POST /api/v1/books
 app.post("/api/v1/books", (req, res) => {
