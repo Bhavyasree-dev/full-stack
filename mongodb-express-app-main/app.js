@@ -6,6 +6,13 @@ const port = process.env.PORT || 7000;
 
 // MongoDB connection
 const mongoUrl = process.env.MONGODB_URI || "mongodb://admin:admin123@localhost:27017";
+console.log("MONGODB_URI exists:", Boolean(process.env.MONGODB_URI));
+console.log(
+  "MongoDB host:",
+  process.env.MONGODB_URI
+    ? new URL(process.env.MONGODB_URI).host
+    : "Using localhost fallback"
+);
 const databaseName = process.env.DB_NAME || "library_db";
 
 const client = new MongoClient(mongoUrl);
